@@ -43,7 +43,7 @@ class InternVLChatConfig(PretrainedConfig):
         super().__init__(**kwargs)
         import json
         current_dir = Path(__file__).resolve().parent
-        config_path = current_dir.parents[2] / 'config.json'
+        config_path = current_dir.parents[1] / 'config.json'
         with open(config_path) as f:
             config = json.load(f)
             llm_config = config['llm_config']
