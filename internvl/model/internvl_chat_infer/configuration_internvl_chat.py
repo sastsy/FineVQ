@@ -14,6 +14,8 @@ from transformers.utils import logging
 
 from .configuration_intern_vit import InternVisionConfig
 
+from pathlib import Path
+
 logger = logging.get_logger(__name__)
 
 
@@ -40,7 +42,9 @@ class InternVLChatConfig(PretrainedConfig):
             **kwargs):
         super().__init__(**kwargs)
         import json
-        with open('config.json')as f:
+        current_dir = Path(__file__).resolve().parent
+        config_path = current_dir.parents[2] / 'config.json'
+        with open(config_path) as f:
             config = json.load(f)
             llm_config = config['llm_config']
             vision_config = config['vision_config']
