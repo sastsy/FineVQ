@@ -9,3 +9,6 @@ description = "Fine-grained Visual-Quantum representation"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [] # We leave this empty since you use --no-deps anyway
+
+[tool.setuptools]
+packages = ["internvl", "data"]
