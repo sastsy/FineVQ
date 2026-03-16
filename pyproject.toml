@@ -11,12 +11,11 @@ requires-python = ">=3.8"
 dependencies = [
     "pytorchvideo",
     "sentencepiece",
-] # We leave this empty since you use --no-deps anyway
+]
 
 [tool.setuptools]
 packages = { find = {} }
 include-package-data = true
 
 [tool.setuptools.package-data]
-# This tells it: "Inside the internvl package, include all .json files"
 "internvl" = ["*.json"]
