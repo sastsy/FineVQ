@@ -338,7 +338,9 @@ class InternVLChatModel(PreTrainedModel):
             loss = loss_fct(shift_logits, shift_labels)
         
         last_hidden_states = outputs.hidden_states[-1]
-        input_tensor = last_hidden_states[:,-4,:]
+        # input_tensor = last_hidden_states[:,-4,:]
+        real_len = attention_mask.sum(dim=1)[0].item()
+        input_tensor = last_hidden_states[:, real_len - 4, :]
         if torch.isnan(last_hidden_states[:,-4,:]).any():
             print("Input contains NaN values!")
             input_tensor = torch.nan_to_num(last_hidden_states[:,-4,:], nan=0.0, posinf=1e9, neginf=-1e9)
